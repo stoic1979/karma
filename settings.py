@@ -5,11 +5,15 @@ import os
 # stored in environment variables.
 MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
 MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
-MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'admin') #FIXME set username later
-MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', '123') #FIXME set password later
-MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'karma')
+MONGO_USERNAME = os.environ.get\
+    ('MONGO_USERNAME', 'admin') # FIXME set username later
+MONGO_PASSWORD = os.environ.get\
+    ('MONGO_PASSWORD', '123') # FIXME set password later
+MONGO_DBNAME = os.environ.get\
+    ('MONGO_DBNAME', 'karma')
 
-MONGO_AUTH_SOURCE = os.environ.get('MONGO_AUTH_SOURCE', 'admin')
+MONGO_AUTH_SOURCE = os.environ.get\
+    ('MONGO_AUTH_SOURCE', 'admin')
 
 
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
@@ -19,6 +23,10 @@ ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 CACHE_CONTROL = 'max-age=20'
 CACHE_EXPIRES = 20
 
+
+#########################################
+#              Company Schema           #
+#########################################
 company = {
 
     # 'title' tag used in item links.
@@ -28,6 +36,12 @@ company = {
     # (https://github.com/pyeve/cerberus) for details.
 
     'schema': {
+
+        '_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
 
         'name': {
             'type': 'string',
@@ -110,84 +124,200 @@ company = {
             'maxlength': 15,
         },
 
+    }
+}
 
 
+#########################################
+#             Manager Schema            #
+#########################################
+manager = {
+    'item_title': 'manager',
 
+    # Schema definition, based on Cerberus grammar. Check the Cerberus project
+    # (https://github.com/pyeve/cerberus) for details.
 
-        # 'role' is a list, and can only contain values from 'allowed'.
-        'role': {
-            'type': 'list',
-            'allowed': ["author", "contributor", "copy"],
+    'schema': {
+
+        '_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
         },
-        # An embedded 'strongly-typed' dictionary.
-        'location': {
-            'type': 'dict',
-            'schema': {
-                'address': {'type': 'string'},
-                'city': {'type': 'string'}
-            },
+
+        'company_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
         },
-        'born': {
-            'type': 'datetime',
+
+        'user_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+    }
+
+}
+
+
+#########################################
+#               User Schema             #
+#########################################
+user = {
+    'item_title': 'user',
+
+    # Schema definition, based on Cerberus grammar. Check the Cerberus project
+    # (https://github.com/pyeve/cerberus) for details.
+
+    'schema': {
+
+        '_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'f_name': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'l_name': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'email': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'password': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
         },
     }
 }
 
-"""
-manager
-->  _id
-->  company_id
-->  user_id
 
-user
-->  _id
-->  f_name
-->  l_name
-->  email
-->  password
-
-
-project
-->  _id
-->  manager_id
-->  title
-->  start_date
-->  end_date
-->  description
-
-
-worker
-->  _id
-->  project_id
-->  user_id
-
-
-task
-->  _id
-->  project_id
-->  worker_id
-
-
-
-"""
-manager = {
-
-}
-
-
-user = {
-
-}
-
+#########################################
+#             Project Schema            #
+#########################################
 project = {
+    'item_title': 'project',
+
+    # Schema definition, based on Cerberus grammar. Check the Cerberus project
+    # (https://github.com/pyeve/cerberus) for details.
+
+    'schema': {
+
+        '_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'manager_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'title': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'start_date': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'end_date': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'description': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+    }
 
 }
 
+
+#########################################
+#             Worker Schema             #
+#########################################
 worker = {
+    'item_title': 'worker',
+
+    # Schema definition, based on Cerberus grammar. Check the Cerberus project
+    # (https://github.com/pyeve/cerberus) for details.
+
+    'schema': {
+
+        '_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'project_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'user_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+    }
 
 }
 
+
+#########################################
+#               Task Schema             #
+#########################################
 task = {
+    'item_title': 'task',
+
+    # Schema definition, based on Cerberus grammar. Check the Cerberus project
+    # (https://github.com/pyeve/cerberus) for details.
+
+    'schema': {
+
+        '_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'project_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+
+        'worker_id': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 10,
+        },
+    }
 
 }
 
