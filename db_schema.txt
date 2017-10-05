@@ -1,0 +1,27 @@
+company
+->  _id
+->  name
+->  email
+->  password
+->  mobile
+->  tel_no.
+->  address_line1
+->  address_line2
+->  registration _no->  city
+->  country
+->  zip
+->  website
+
+
+manager
+->  id
+->  company_id
+->  user_id
+
+
+
+
+
+
+
+------------
