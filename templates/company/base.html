@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<div class="container">
+  <head>
+    <title>{% block title %}{% endblock %} - KARMA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+      		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+
+      {% block head %}{% endblock %}
+  </head>
+
+  <body>
+
+
+  <!---------------------------- NAVIGATION BAR BEGINS ---------------------------->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">KARMA</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">VIEW</a></li>
+                <li><a href="#">VIEW</a></li>
+                <li><a href="#">VIEW</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--{% if session['name'] %}-->
+                <!--<li><a href="{{ url_for('clearsession') }}"><span class="glyphicon glyphicon-log-out">&nbsp;</span>Logout</a></li>-->
+                <!--{% else %}        -->
+                <li><a href="/company/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/company/signin"><span class="glyphicon glyphicon-log-in"></span> Signin</a></li>
+                <!--{% endif %}-->
+
+              </ul>
+        </div>
+  </div>
+</nav>
+  <!----------------------------- NAVIGATION BAR ENDS ----------------------------->
+
+
+                   {% block content %}{% endblock %}
+
+
+  <!----------------------------- FOOTER ----------------------------->
+    <div id="footer">
+      {% block footer %}
+        <center>
+
+      &copy; Copyright 2017 by <a href="#">Karma, Inc.</a>.
+        </center>
+      {% endblock %}
+    </div>
+  </body>
+</html>
