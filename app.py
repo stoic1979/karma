@@ -73,10 +73,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         if mdb.company_exists(email, password):
-
-            ret['msg'] = 'Login Successfull'
-            ret['error'] = 0
-            ret['token'] = token.decode('UTF-8')
+            print 'Login Successfully'
             templateData = {'title': 'singin page'}
         else:
             return render_template('/company/index.html', **templateData)
