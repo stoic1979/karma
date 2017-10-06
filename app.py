@@ -1,13 +1,17 @@
-from flask import Flask, request, render_template
+import os
+from flask import request, render_template
 from db import Mdb
 import traceback
+from eve import Eve
 
-app = Flask(__name__)
+#app = Flask(__name__)
+tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+app = Eve('Karma-App', template_folder=tmpl_dir)
+
 mdb = Mdb()
 
-
 @app.route('/')
-def home():
+def main_page():
     templateData = {'title': 'Signup Page'}
     return render_template('company/index.html', **templateData)
 
@@ -43,7 +47,7 @@ def add_user():
     return render_template('company/signin.html', **templateData)
 
 
-@app.route('/company')
+@app.route('/company', methods=['GET'])
 def company():
     templateData = {'title': 'Home Page'}
     return render_template('company/index.html', **templateData)
