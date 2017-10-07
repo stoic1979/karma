@@ -12,8 +12,8 @@ MONGO_PASSWORD = os.environ.get\
 MONGO_DBNAME = os.environ.get\
     ('MONGO_DBNAME', 'karma')
 
-MONGO_AUTH_SOURCE = os.environ.get\
-    ('MONGO_AUTH_SOURCE', 'admin')
+# MONGO_AUTH_SOURCE = os.environ.get\
+#    ('MONGO_AUTH_SOURCE', 'admin')
 
 
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
