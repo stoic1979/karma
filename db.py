@@ -5,8 +5,15 @@ import traceback
 class Mdb:
 
     def __init__(self):
-        conn_str = "mongodb://admin:123@127.0.0.1:27017/admin"
+        # conn_str = "mongodb://admin:123@127.0.0.1:27017/admin"
+        conn_str = "mongodb://karmadbuser1:" \
+                    "karmadbuser1@ds113505.mlab.com:13505/karma"
+                    # "mongodb://karmadbuser1:karmadbuser1@ds113505.mlab.com:13505/karma"
+
+        # mongodb terminal command
+            # mongo ds113505.mlab.com:13505/karma -u <dbuser> -p <dbpassword>
         client = MongoClient(conn_str)
+        # self.db = client['heroku_188g0kct']
         self.db = client['karma']
 
     def add_user(self, name, registration, city, state, zip, country, company,
