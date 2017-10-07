@@ -1,0 +1,15 @@
+API tests with curl CLI
+
+
+Local tests
+=============
+curl -i -X POST -H "Content-Type: application/json" -d "{\"company_id\": \"cid1\", \"user_id\": \"uid1\"}" http://192.168.1.8:5000/api/manager/
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\": \"newcomp\",\"email\": \"n@n.com\",\"password\": \"222\",\"mobile\": \"5678\",\"tel_no\": \"9999\",\"address_line1\": \"a1a1\",\"address_line2\": \"a2a2\",\"registration_no\": \"f5t4f45\",\"city\": \"chd\",\"country\": \"in\",\"zip\": \"3456\",\"website\": \"www.abc.com\"}"  http://192.168.1.8:5000/api/company/
+
+
+
+Remote/Heroku Tests
+=====================
+curl -i -X POST -H "Content-Type: application/json" -d "{\"company_id\": \"cid\", \"user_id\": \"uid\"}" https://karma9.herokuapp.com/api/comapny/
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\": \"newcomp\",\"email\": \"n@n.com\",\"password\": \"222\",\"mobile\": \"5678\",\"tel_no\": \"9999\",\"address_line1\": \"a1a1\",\"address_line2\": \"a2a2\",\"registration_no\": \"f5t4f45\",\"city\": \"chd\",\"country\": \"in\",\"zip\": \"3456\",\"website\": \"www.abc.com\"}"  https://karma9.herokuapp.com/api/company/
+
