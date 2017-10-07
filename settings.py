@@ -38,12 +38,6 @@ company = {
 
     'schema': {
 
-        '_id': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 10,
-        },
-
         'name': {
             'type': 'string',
             'minlength': 1,
@@ -140,12 +134,6 @@ manager = {
 
     'schema': {
 
-        '_id': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 10,
-        },
-
         'company_id': {
             'type': 'string',
             'minlength': 1,
@@ -172,12 +160,6 @@ user = {
     # (https://github.com/pyeve/cerberus) for details.
 
     'schema': {
-
-        '_id': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 10,
-        },
 
         'f_name': {
             'type': 'string',
@@ -216,12 +198,6 @@ project = {
     # (https://github.com/pyeve/cerberus) for details.
 
     'schema': {
-
-        '_id': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 10,
-        },
 
         'manager_id': {
             'type': 'string',
@@ -268,12 +244,6 @@ worker = {
 
     'schema': {
 
-        '_id': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 10,
-        },
-
         'project_id': {
             'type': 'string',
             'minlength': 1,
@@ -300,12 +270,6 @@ task = {
     # (https://github.com/pyeve/cerberus) for details.
 
     'schema': {
-
-        '_id': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 10,
-        },
 
         'project_id': {
             'type': 'string',
