@@ -13,7 +13,6 @@
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-
       {% block head %}{% endblock %}
   </head>
 
@@ -33,19 +32,28 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="#">VIEW</a></li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">PROJECTS
+                    <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/company/projects">PROJECTS 1</a></li>
+                            <li><a href="/company/projects">PROJECTS 2</a></li>
+                            <li><a href="/company/projects">PROJECTS 3</a></li>
+                        </ul>
+                </li>
                 <li><a href="#">VIEW</a></li>
                 <li><a href="#">VIEW</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!--{% if session['name'] %}-->
-                <!--<li><a href="{{ url_for('clearsession') }}"><span class="glyphicon glyphicon-log-out">&nbsp;</span>Logout</a></li>-->
-                <!--{% else %}        -->
-                <li><a href="/company/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="/company/signin"><span class="glyphicon glyphicon-log-in"></span> Signin</a></li>
-                <!--{% endif %}-->
+
+             <ul class="nav navbar-nav navbar-right">
+                {% if session['name'] %}
+                <li><a href="{{ url_for('clearsession') }}"><span class="glyphicon glyphicon-log-out">&nbsp;</span>Logout</a></li>
+                {% else %}        <li><a href="/company/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/company/signin"><span class="glyphicon glyphicon-log-in"></span> Signin</a></li>{% endif %}
 
               </ul>
+
         </div>
   </div>
 </nav>
