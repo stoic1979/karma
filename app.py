@@ -2,6 +2,10 @@ import os
 from flask import request, render_template, session, url_for, redirect
 from db import Mdb
 import traceback
+import time
+import jwt
+import datetime
+from datetime import datetime, timedelta
 import json
 from werkzeug.utils import secure_filename
 from flask.ext.bcrypt import Bcrypt
@@ -97,6 +101,7 @@ def add_company():
         password = request.form['password']
         website = request.form['website']
 
+
         # password bcrypt  #
         pw_hash = bcrypt.generate_password_hash(password)
         passw = bcrypt.check_password_hash(pw_hash, password)
@@ -127,6 +132,12 @@ def signup():
 def signin():
     templateData = {'title': 'Signin Page'}
     return render_template('company/signin.html', **templateData)
+
+
+@app.route('/company/projects')
+def projects():
+    templateData = {'title': 'projects Page'}
+    return render_template('company/projects.html', **templateData)
 
 
 #############################################
