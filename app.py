@@ -17,6 +17,7 @@ tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                         'templates')
 app = Eve('Karma-App', template_folder=tmpl_dir)
 bcrypt = Bcrypt(app)
+
 mdb = Mdb()
 
 app.config['secretkey'] = 'some-strong+secret#key'
