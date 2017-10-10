@@ -37,15 +37,15 @@
                 <li><a href="#">VIEW</a></li>
                 <li><a href="#">VIEW</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!--{% if session['name'] %}-->
-                <!--<li><a href="{{ url_for('clearsession') }}"><span class="glyphicon glyphicon-log-out">&nbsp;</span>Logout</a></li>-->
-                <!--{% else %}        -->
-                <li><a href="/company/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="/company/signin"><span class="glyphicon glyphicon-log-in"></span> Signin</a></li>
-                <!--{% endif %}-->
+
+             <ul class="nav navbar-nav navbar-right">
+                {% if session['name'] %}
+                <li><a href="{{ url_for('clearsession') }}"><span class="glyphicon glyphicon-log-out">&nbsp;</span>Logout</a></li>
+                {% else %}        <li><a href="/company/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/company/signin"><span class="glyphicon glyphicon-log-in"></span> Signin</a></li>{% endif %}
 
               </ul>
+
         </div>
   </div>
 </nav>
