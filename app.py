@@ -1,4 +1,5 @@
 import os
+import jsonify
 from flask import request, render_template
 from db import Mdb
 import traceback
@@ -21,6 +22,7 @@ def main_page():
 #              REGISTER COMPANY             #
 #                                           #
 #############################################
+"""
 @app.route("/company/signup", methods=['POST'])
 def add_user():
     try:
@@ -41,10 +43,39 @@ def add_user():
                      phone, email, password, website)
         print('User is added successfully')
         templateData = {'title': 'Signin Page'}
+        return render_template('company/signin.html', **templateData)
     except Exception as exp:
         print('add_user() :: Got exception: %s' % exp)
         print(traceback.format_exc())
-    return render_template('company/signin.html', **templateData)
+"""
+
+
+@app.route("/company/signup", methods=['POST'])
+def add_user():
+    try:
+        json_data = request.json['info']
+        print "=====================", json_data
+        name = json_data['name']
+        registration = json_data['regis']
+        city = json_data['city']
+        zip = json_data['zip']
+        country = json_data['country']
+        phone = json_data['phone']
+        mobile = json_data['mobile']
+        email = json_data['email']
+        password = json_data['password']
+        website = json_data['website']
+
+        mdb.add_user(name, registration, city, zip, country,
+                     phone, email, password, website)
+        print('User is added successfully')
+        templateData = {'title': 'Signin Page'}
+        return render_template('company/signin.html', **templateData)
+    except Exception as exp:
+        print('add_user() :: Got exception: %s' % exp)
+        print(traceback.format_exc())
+        return "Not done"
+
 
 
 @app.route('/company', methods=['GET'])
