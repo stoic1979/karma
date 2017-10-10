@@ -1,7 +1,7 @@
 import os
-
 from flask import request, render_template, session, url_for, redirect
 import jsonify
+
 from db import Mdb
 import traceback
 import time
@@ -146,7 +146,6 @@ def add_user():
         print('add_user() :: Got exception: %s' % exp)
         print(traceback.format_exc())
         return "Not done"
-
 
 
 @app.route('/company', methods=['GET'])
