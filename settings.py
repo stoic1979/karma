@@ -3,17 +3,32 @@ import os
 # we want to seamlessy run our API both locally and on Heroku.
 # If running on Heroku, sensible DB connection settings are
 # stored in environment variables.
-MONGO_HOST = os.environ.get('MONGO_HOST', 'ds113505.mlab.com')
-MONGO_PORT = os.environ.get('MONGO_PORT', 13505)
+
+###############################
+#           MLAB              #
+###############################
+# MONGO_HOST = os.environ.get('MONGO_HOST', 'ds113505.mlab.com')
+# MONGO_PORT = os.environ.get('MONGO_PORT', 13505)
+# MONGO_USERNAME = os.environ.get\
+#     ('MONGO_USERNAME', 'karmadbuser1') # FIXME set username later
+# MONGO_PASSWORD = os.environ.get\
+#     ('MONGO_PASSWORD', 'karmadbuser1') # FIXME set password later
+# MONGO_DBNAME = os.environ.get\
+#     ('MONGO_DBNAME', 'karma')
+
+##############################
+#        LOCALHOST           #
+##############################
+MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
+MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
 MONGO_USERNAME = os.environ.get\
-    ('MONGO_USERNAME', 'karmadbuser1') # FIXME set username later
+    ('MONGO_USERNAME', 'admin') # FIXME set username later
 MONGO_PASSWORD = os.environ.get\
-    ('MONGO_PASSWORD', 'karmadbuser1') # FIXME set password later
+    ('MONGO_PASSWORD', '123') # FIXME set password later
 MONGO_DBNAME = os.environ.get\
     ('MONGO_DBNAME', 'karma')
-
-# MONGO_AUTH_SOURCE = os.environ.get\
-#    ('MONGO_AUTH_SOURCE', 'admin')
+MONGO_AUTH_SOURCE = os.environ.get\
+    ('MONGO_AUTH_SOURCE', 'admin')
 
 
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
