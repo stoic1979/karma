@@ -13,14 +13,14 @@
                 $scope.info = {};
 
 				$scope.addcompany = function(){
-					alert($scope.info);
+					//alert($scope.info);
 					$http({
 						method: 'POST',
 						url: '/api/company/',
 						data: $scope.info
 					}).then(function(response){
-						alert("hello...");
-						alert("hiiiii");
+						alert("Data added Successfully...!");
+						//alert("hiiiii");
 					}, function(error){
 						console.log(error);
 						alert("error..." + error);
