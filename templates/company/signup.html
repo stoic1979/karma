@@ -7,6 +7,10 @@
 {% endblock %}
 {% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
             angular.module('karmaApp', [])
             .controller('karmaControllerApp', function($scope, $http) {
@@ -18,13 +22,22 @@
 						method: 'POST',
 						url: '/api/company/',
 						data: $scope.info
-					}).then(function(response){
-						alert("Data added Successfully...!");
+					}).then(function(response)
+					{
+						<!--alert("Data added Successfully...!");-->
+						$scope.showAdd = true;
+						$('#show').show()
+						$('#addPopUp').hide();
+						$('#error').hide();
+
 						//alert("hiiiii");
 					}, function(error){
 						console.log(error);
 						alert("error..." + error);
-						alert(error["data"]);
+						<!--alert(error["data"]);-->
+						$('#error').show()
+						$('#addPopUp').hide();
+						$('#show').hide();
 					})
 					 //end http
 				} //end metnod
@@ -34,13 +47,13 @@
 <p class="important">
 <body ng-app="karmaApp" ng-controller="karmaControllerApp">
 <h1 class="well">Company Registration </h1>
-    <div class="col-lg-12 well">
+<div id="addPopUp">
+
+<div id="registration_page" class="col-lg-12 well">
 	    <div class="row">
 		    <form>
-
-			    <div class="col-sm-12">
+			    <div  class="col-sm-12">
 				    <div class="row">
-
                         <div class="col-sm-6 form-group">
 						    <label> Name</label>
 							    <input type="text" placeholder="Enter  Name Here.." ng-model="info.name" class="form-control">
@@ -50,7 +63,6 @@
 							<label>Registration no.</label>
 								<input type="text" placeholder="Enter registration no. Here.." ng-model="info.registration_no" class="form-control">
 						</div>
-
                     </div>
 
 					<div class="form-group">
@@ -71,7 +83,8 @@
                     <div class="form-group">
 						<label>Address Line 1</label>
 							<input placeholder="Enter Address Here.." rows="3" ng-model="info.address_line1" class="form-control"></input>
-						</div>
+					</div>
+
 					<div class="form-group">
 						<label>Address Line 2</label>
 							<input placeholder="Enter Address Here.." rows="3" ng-model="info.address_line2" class="form-control"></input>
@@ -83,27 +96,26 @@
 								<input type="text" placeholder="Enter City Name Here.." ng-model="info.city" class="form-control">
 						</div>
 
-                        <div class="col-sm-4 form-group">
+                    	<div class="col-sm-4 form-group">
 							<label>Zip Code </label>
 								<input type="text" placeholder="Enter Zip Code Here.." ng-model="info.zip" class="form-control">
-                        </div>
-                    </div>
+                    	</div>
+					</div>
 
                     <div class="row">
                         <div class="col-sm-6 form-group">
 							<label>Country</label>
-
-                                    <select id="country" class="form-control" width="200%" ng-model="info.country" id="country" required="">
-                            			<option>Afghanistan</option>
-                            			<option>Bahamas</option>
-                            			<option>Cambodia</option>
-                           				<option>Denmark</option>
-                            			<option>Ecuador</option>
-                           				<option>Fiji</option>
-                            			<option>Gabon</option>
-                            			<option>Haiti</option>
-                           	 			<option>India</option>
-                        			</select>
+								<select id="country" class="form-control" width="200%" ng-model="info.country" id="country" required="">
+                            		<option>Afghanistan</option>
+                            		<option>Bahamas</option>
+                            		<option>Cambodia</option>
+                           			<option>Denmark</option>
+                            		<option>Ecuador</option>
+                           			<option>Fiji</option>
+                            		<option>Gabon</option>
+                            		<option>Haiti</option>
+                           	 		<option>India</option>
+								</select>
 
                         </div>
 					</div>
@@ -118,13 +130,26 @@
 						    <input type="text" placeholder="Enter Phone Number Here.." ng-model="info.mobile" class="form-control">
 					</div>
 
-
-
-					    <button type="submit" class="btn btn-lg btn-info" ng-click="addcompany()" >Submit</button>
+					<button  type="submit" class="btn btn-lg btn-info" ng-click="addcompany()" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Submit</button>
 				</div>
             </form>
+
         </div>
     </div>
+</div>
+
+<center>
+
+	<div id="show" ng-show="showAdd" class="col-lg-12 well" >
+		<p style="color:green;">Congratulations your company registered successfully..!</p>
+	</div>
+
+	<div id="error" ng-show="showAdd" class="col-lg-12 well" >
+		<p style="color:red;">Something is Wrong ..</p>
+	</div>
+
+</center>
+
 </body>
 </p>
 
