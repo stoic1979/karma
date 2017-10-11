@@ -19,6 +19,7 @@ idna==2.6
 ipaddress==1.0.18
 itsdangerous==0.24
 Jinja2==2.9.6
+jsonify==0.5
 jwt==0.5.2
 MarkupSafe==0.23
 pyasn1==0.3.7
