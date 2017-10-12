@@ -1,6 +1,6 @@
 import os
 from flask import request, render_template, session, url_for, redirect
-import jsonify
+
 
 from db import Mdb
 import traceback
@@ -88,39 +88,35 @@ def token_required(f):
 #              REGISTER COMPANY             #
 #                                           #
 #############################################
-"""
 @app.route("/company/signup", methods=['POST'])
 def add_company():
     try:
-        name = request.form['name']
-        registration = request.form['regis']
-        city = request.form['city']
-        state = request.form['state']
-        zip = request.form['zip']
-        country = request.form['country']
-        company = request.form['company']
-        phone = request.form['phone']
-        mobile = request.form['mobile']
-        email = request.form['email']
-        password = request.form['password']
-        website = request.form['website']
+        name = json_data['name']
+        registration = json_data['regis']
+        city = json_data['city']
+        zip = json_data['zip']
+        country = json_data['country']
+        phone = json_data['phone']
+        mobile = json_data['mobile']
+        email = json_data['email']
+        password = json_data['password']
+        website = json_data['website']
 
 
         # password bcrypt  #
         pw_hash = bcrypt.generate_password_hash(password)
         passw = bcrypt.check_password_hash(pw_hash, password)
 
-        mdb.add_company(name, registration, city, state, zip, country,
-                        company, phone, email, pw_hash, website)
+        mdb.add_company(name, registration, city, zip, country,
+                     phone, email, pw_hash, website)
         print('Company is added successfully')
         templateData = {'title': 'Signin Page'}
         return render_template('company/signin.html', **templateData)
     except Exception as exp:
         print('add_company() :: Got exception: %s' % exp)
         print(traceback.format_exc())
-"""
 
-
+'''
 @app.route("/company/signup", methods=['POST'])
 def add_user():
     try:
@@ -146,7 +142,7 @@ def add_user():
         print('add_user() :: Got exception: %s' % exp)
         print(traceback.format_exc())
         return "Not done"
-
+'''
 
 @app.route('/company', methods=['GET'])
 def company():
@@ -174,7 +170,7 @@ def projects():
 
 #############################################
 #                                           #
-#                 LOGIN USER                #
+#                LOGIN COMPANY              #
 #                                           #
 #############################################
 @app.route('/login', methods=['POST'])
@@ -227,6 +223,18 @@ def login():
 def clearsession():
     session.clear()
     return render_template('/company/index.html', session=session)
+
+
+@app.route('/user/signup')
+def user_signup():
+    templateData = {'title': 'signup Page'}
+    return render_template('/user/signup.html', **templateData)
+
+
+@app.route('/user/signin')
+def user_signin():
+    templateData = {'title': 'Signin Page'}
+    return render_template('/user/signin.html', **templateData)
 
 
 #############################################
