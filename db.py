@@ -20,18 +20,16 @@ class Mdb:
 #                   ADD COMPANY             #
 #                                           #
 #############################################
-    def add_company(self, name, registration, city, state, zip, country,
-                    company, phone, email, pw_hash, website):
+    def add_company(self, name, registration, city, zip, country,
+                     phone, email, pw_hash, website):
         try:
 
             rec = {
                 'name': name,
                 'registration': registration,
                 'city': city,
-                'state': state,
                 'zip': zip,
                 'country': country,
-                'company': company,
                 'phone': phone,
                 'email': email,
                 'password': pw_hash,
