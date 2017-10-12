@@ -7,9 +7,49 @@
 {% endblock %}
 {% block content %}
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            angular.module('karmaApp', [])
+            .controller('karmaControllerApp', function($scope, $http) {
+                $scope.info = {};
+
+				$scope.addtask = function(){
+					//alert($scope.info);
+					$http({
+						method: 'POST',
+						url: '/api/task/',
+						data: $scope.info
+					}).then(function(response)
+					{
+						//alert("Data added Successfully...!");
+						$scope.showAdd = true;
+						$('#show').show()
+						$('#addPopUp').hide();
+						$('#error').hide();
+
+						//alert("hiiiii");
+					}, function(error){
+						console.log(error);
+						alert("error..." + error);
+						alert(error["data"]);
+
+					})
+					 //end http
+				} //end metnod
+			}) // end controller
+        </script>
+
+
 <p class="important">
-<body>
+<body ng-app="karmaApp" ng-controller="karmaControllerApp">
 <h1 class="well">TASK</h1>
+<div id="addPopUp">
     <div class="col-lg-12 well">
 	    <div class="row">
 		    <form>
@@ -21,22 +61,35 @@
 
 					<div class="form-group">
 						<label>Project id</label>
-					    	<input type="text" placeholder="Enter Project id Here.." ng-model="info.email" class="form-control">
+					    	<input type="text" placeholder="Enter Project id Here.." ng-model="info.project_id" class="form-control">
 					</div>
 
 
 
 					<div class="form-group">
 						<label>Worker id</label>
-					    	<input type="text" placeholder="Enter Worker id Here.." ng-model="info.website" class="form-control">
+					    	<input type="text" placeholder="Enter Worker id Here.." ng-model="info.worker_id" class="form-control">
 					</div>
 
 
-					    <button type="submit" class="btn btn-lg btn-info" ng-click="addcompany()" >Submit</button>
+					    <button type="submit" class="btn btn-lg btn-info" ng-click="addtask()" >Submit</button>
+				</div>
 				</div>
             </form>
         </div>
     </div>
+</div>
+<center>
+
+	<div id="show" ng-show="showAdd" class="col-lg-12 well" >
+		<p style="color:green;">Task successfully asigned..!</p>
+	</div>
+
+	<div id="error" ng-show="showAdd" class="col-lg-12 well" >
+		<p style="color:red;">Something is Wrong ..</p>
+	</div>
+
+</center>
 </body>
 </p>
 
