@@ -25,13 +25,17 @@
 						data: $scope.info
 					}).then(function(response)
 					{
-						alert("Data added Successfully...!");
-
+						//alert("Data added Successfully...!");
+						$scope.showAdd = true;
+						$('#show').show()
+						$('#addPopUp').hide();
+						$('#error').hide();
 						//alert("hiiiii");
 					}, function(error){
 						console.log(error);
-						alert("error..." + error);
-						alert(error["data"]);
+						$('#error').show()
+						$('#addPopUp').hide();
+						$('#show').hide();
 
 					})
 					 //end http
@@ -43,6 +47,7 @@
 <p class="important">
 <body ng-app="karmaApp" ng-controller="karmaControllerApp">
 <h1 class="well">User Registration </h1>
+<div id="addPopUp">
     <div class="col-lg-12 well">
 	    <div class="row">
 		    <form>
@@ -78,6 +83,18 @@
             </form>
         </div>
     </div>
+</div>
+<center>
+
+	<div id="show" ng-show="showAdd" class="col-lg-12 well" >
+		<p style="color:green;">User successfully Added..!</p>
+	</div>
+
+	<div id="error" ng-show="showAdd" class="col-lg-12 well" >
+		<p style="color:red;">Something is Wrong ..</p>
+	</div>
+
+</center>
 </body>
 </p>
 
