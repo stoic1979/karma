@@ -225,6 +225,12 @@ def clearsession():
     return render_template('/company/index.html', session=session)
 
 
+@app.route('/user')
+def user():
+    templateData = {'title': 'home Page'}
+    return render_template('/user/index.html', **templateData)
+
+
 @app.route('/user/signup')
 def user_signup():
     templateData = {'title': 'signup Page'}
@@ -235,6 +241,30 @@ def user_signup():
 def user_signin():
     templateData = {'title': 'Signin Page'}
     return render_template('/user/signin.html', **templateData)
+
+
+@app.route('/user/task')
+def user_task():
+    templateData = {'title': 'Task Page'}
+    return render_template('/user/task.html', **templateData)
+
+
+@app.route('/user/worker')
+def user_worker():
+    templateData = {'title': 'worker Page'}
+    return render_template('/user/worker.html', **templateData)
+
+
+@app.route('/user/manager')
+def user_manager():
+    templateData = {'title': 'manager Page'}
+    return render_template('/user/manager.html', **templateData)
+
+
+@app.route('/user/project')
+def user_project():
+    templateData = {'title': 'project Page'}
+    return render_template('/user/project.html', **templateData)
 
 
 #############################################
